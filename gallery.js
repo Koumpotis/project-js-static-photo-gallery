@@ -1,6 +1,9 @@
 let fs = require('fs');
+let readlineSync = require('readline-sync');
 
-let imageFileNames = fs.readdirSync('site/images');
+// let selectedImageRepository = readlineSync.question('What file of images are you going to use?');
+
+let imageFileNames = fs.readdirSync('site/InsertedPhotos');
 
 // This code is just here to demonstrate how fs.readdirSync works
 let firstHalOfCode = `<!DOCTYPE html>
@@ -11,25 +14,25 @@ let firstHalOfCode = `<!DOCTYPE html>
 </head>
 <body>
 <header id="page-header">
-<h1>Amazing Photo Gallery</h1>`
+<h1>Amazing Photo Gallery</h1>`;
 
 let secondHalfOfCode = `</p>
 </body>
 </html>`;
 
 let addedImages;
-//let count = 0;
+// let count = 0;
 for (let i = 1; i < imageFileNames.length + 1; i++) {
   let fileName = imageFileNames[i - 1];
 
   if (i === 1) {
-    addedImages = `<img src="images/${fileName}" width="500" height="600">`;
+    addedImages = `<img src="./InsertedPhotos/${fileName}" width="500" height="600">`;
     console.log(`${i}. ${fileName}`);
   } else if (i % 3 === 0) {
-    addedImages = addedImages + `<img src="images/${fileName}" width="500" height="600">\r\n`;
+    addedImages = addedImages + `<img src="./InsertedPhotos/${fileName}" width="500" height="600">\r\n`;
     console.log(`${i}. ${fileName}`);
   } else {
-    addedImages = addedImages + `<img src="images/${fileName}" width="500" height="600">`;
+    addedImages = addedImages + `<img src="./InsertedPhotos/${fileName}" width="500" height="600">`;
     console.log(`${i}. ${fileName}`);
   }
 }
